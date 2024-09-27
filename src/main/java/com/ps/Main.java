@@ -36,15 +36,13 @@ public class Main {
         double totalInterest = monthlyPayment * loanInMonth - principal;
         String messageToUser = String.format("For a mortgage of %s, an interest rate of %s and a loan length of %s years. Your " +
                         "total monthly payment is $ %s and a total interest of %s"
-
-
                 ,principal, interestRate, loanDuration, format.format(monthlyPayment), format.format(totalInterest));
         System.out.println(messageToUser);
 
 
 
 
-        // mortgage formula M = P [ I(1 + I)N ] / [ (1 + I)N − 1]
+
 
 
 

@@ -10,9 +10,17 @@ public class Main {
         System.out.println("Welcome to Calculator World," +
                 " select one of the following numbers: " +
                 "1) mortgage calculator, 2) future value calculator, 3) present annuity value calculator");
-        if(scanner.nextInt() == 1){
+        int selection = scanner.nextInt();
+        if(selection == 1){
             mortgageCalculator();
+        } else if (selection == 2) {
+            futureValueCalculator();
+        } else if (selection == 3){
+            presentValueCalculator();
+        } else {
+            System.out.println("invalid command");
         }
+
     }
 
     public static void mortgageCalculator(){
@@ -38,13 +46,40 @@ public class Main {
                         "total monthly payment is $ %s and a total interest of %s"
                 ,principal, interestRate, loanDuration, format.format(monthlyPayment), format.format(totalInterest));
         System.out.println(messageToUser);
+    }
+    public static void  futureValueCalculator(){
+        //System.out.println("Hello World");
+        double deposit;
+        double cdInterestRate;
+        int maturity;
+
+        System.out.println("Welcome to future value calculator!");
+
+        System.out.println("Enter your Rate: ");
+        cdInterestRate = scanner.nextDouble();
+        double dailyRate = (cdInterestRate / 365) / 100;
+
+        //System.out.println(dailyRate);
+
+        System.out.println("Enter the maturity in years: ");
+        maturity = scanner.nextInt();
+        int maturityTimes_365 = maturity * 365;
+
+        System.out.println("Enter the deposit amount: ");
+        deposit = scanner.nextDouble();
+
+        double futureValue = deposit * Math.pow(( 1 + dailyRate), maturityTimes_365);
+        //System.out.println(futureValue); testing for future value
+        double totalInterest = futureValue - deposit;
+        //System.out.println(totalInterest); testing for total interest
+        String messageToUser = String.format("If you deposit %s in a cd that earns %s percent interest and matures in %s years your cd's ending " +
+                "balance would be %s and you would have earned %s ", deposit, cdInterestRate, maturity, format.format(futureValue), format.format(totalInterest));
+        System.out.println(messageToUser);
 
 
 
-
-
-
-
-
+    }
+    public static void presentValueCalculator(){
+        System.out.println("Hello world");
     }
 }
